@@ -812,15 +812,14 @@ The output on the screen should look like:
 vsearch v1.1.1_linux_x86_64, 883.4GB RAM, 160 cores
 https://github.com/torognes/vsearch
 
-Reading file /gdc_home4/jpuritz/test/D1W/pyrad/clust.88/cat.firsts_ 100%  
-3115443 nt in 33487 seqs, min 91, max 99, avg 93
+Reading file /gdc_home4/jpuritz/D1W/pyrad/clust.88/cat.firsts_ 100%  
+3258238 nt in 35004 seqs, min 91, max 100, avg 93
 Indexing sequences 100%  
 Counting unique k-mers 100%  
 Clustering 100%  
 Writing clusters 100%  
-Clusters: 1050 Size min 1, max 40, avg 31.9
-Singletons: 19, 0.1% of seqs, 1.8% of clusters
-
+Clusters: 1049 Size min 1, max 47, avg 33.4
+Singletons: 21, 0.1% of seqs, 2.0% of clusters
 	finished clustering
 ```
 We can see that pyRAD (via the program vsearch) found 1049 different shared reference sequences
@@ -851,16 +850,16 @@ head ./stats/c88d6m4p3.stats
 ```
 
 ```
-1018        ## loci with > minsp containing data
-108         ## loci with > minsp containing data & paralogs removed
-108         ## loci with > minsp containing data & paralogs removed & final filtering
+1011       ## loci with > minsp containing data
+78         ## loci with > minsp containing data & paralogs removed
+78         ## loci with > minsp containing data & paralogs removed & final filtering
 
 ## number of loci recovered in final data set for each taxon.
 taxon	nloci
-PopA_01	68
-PopA_02	67
+PopA_01	58
+PopA_02	57
 ```
-What the heck happened to all our data?  We went from 1018 RAD fragments to 106???????
+What the heck happened to all our data?  We went from 1011 RAD fragments to 77???????
 It looks like pyRAD is inferring that almost all of the loci are paralogs.
 Remember, pyRAD is designed to generate phylogenetic data sets and is not default configured to deal with highly polymorphic populations.
 Setting number 13 sets the maximum number of individuals with a shared heterozygous site.  The default configuration is only 3.  
@@ -876,15 +875,15 @@ head ./stats/c88d6m4p3.stats
 ```
 ```
 1018        ## loci with > minsp containing data
-970         ## loci with > minsp containing data & paralogs removed
-970         ## loci with > minsp containing data & paralogs removed & final filtering
+958         ## loci with > minsp containing data & paralogs removed
+958         ## loci with > minsp containing data & paralogs removed & final filtering
 
 ## number of loci recovered in final data set for each taxon.
 taxon	nloci
-PopA_01	806
-PopA_02	802
+PopA_01	830
+PopA_02	833
 ```	
-That looks much better! 970 is very close to the actual value!
+That looks much better! 958 is very close to the actual value!
 Now that you know how to manipulate the different parameters in pyRAD, experiment on your own to see if you can find the right settings to get to the correct number of loci!
 
 ##Bonus
