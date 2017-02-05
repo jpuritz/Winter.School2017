@@ -1,7 +1,7 @@
-#dDocent Reference Assembly Tutorial
+#dDocent Reference Assembly Exercise
 Designed by Jon Puritz
 
-**NOTE: You can download the RefTut file from the depository and run this tutorial from the command line**
+**NOTE: You can download the Ref.Ex file from the depository and run this tutorial from the command line**
 
 #GOALS
 1.	To set up test data for our exercise
