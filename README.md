@@ -13,29 +13,29 @@ Marine Science Center, Northeastern University, USA
 ##### Mr. Erik Garrison
 Wellcome Trust Sanger Institute, UK
 
-* **[Lectures](https://docs.google.com/presentation/d/1YqbVa1vJPsPjcsQu4-a8pTWHXVAS3FCUR_DnsgqGatw/edit#slide=id.p)**
-* **[Practical](https://github.com/ekg/alignment-and-variant-calling-tutorial)**
+* **[Lectures]()**
+* **[Practical]()**
 
 ## Statistical population genetics and inference of population structure 
 ##### Prof. Dr. Alex Buerkle 
 University of Wyoming, USA
 
-* **[Lectures](https://github.com/mfumagalli/Weggis)**
-* **[Practical](https://github.com/mfumagalli/Weggis)**
+* **[Lectures]()**
+* **[Practical]()**
 
 ## Detection of signatures of selection
 ##### Dr. Anders Albrechtsen
 Bioinformatics Centre, Copenhagen University, Denmark
 	
-* **[Lectures](/Lectures/Day 5)**
-* **[Practical](/Exercises/Day 5)**
+* **[Lectures](/Lectures/Day 4)**
+* **[Practical](/Exercises/Day 4)**
 
 ## Inferring complex demographies from genomic data and low coverage GWAS  
 ##### Prof. Dr. Daniel Wegmann 
 University of Fribourg, Switzerland
 
-* **[Lectures](/Lectures/Day 4)**
-* **[Practical](/Exercises/Day 4)**
+* **[Lectures](/Lectures/Day 5)**
+* **[Practical](/Exercises/Day 5)**
 
 
 
