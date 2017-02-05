@@ -553,6 +553,63 @@ grep '^NAATT.*N*.*CCGN$' reference.fasta | wc -l
 
 No surprises here from our simulated data, butI highly recommend familiarizing yourself with grep, awk, and regular expressions to help evaluate de novo references.
 
+#Bonus Section
+
+Here, I am going to let you in on an experimental script I have been using to help optimize reference assemblies.
+
+```bash
+https://raw.githubusercontent.com/jpuritz/dDocent/master/scripts/RefMapOpt.sh
+```
+
+This script assembles references across cutoff values and then maps 20 random samples and evaluates mappings to the reference, along with number of contigs and coverage.  
+It takes a long time to run, but here's a sample command and output
+
+```bash
+#RefMapOpt.sh 4 8 4 8 0.9 64 PE
+```
+
+This would loop across cutoffs of 4-8 using a similarity of 90% for clustering, parellized across 64 processors, using PE assembly technique.
+
+The output is stored in a file called `mapping.results`
+
+```bash
+curl -L -o mapping.results https://www.dropbox.com/s/x7p7j1xn1hjltzv/mapping.results?dl=0
+cat mapping.results
+```
+
+```
+Cov		Non0Cov	Contigs	MeanContigsMapped	K1	K2	SUM Mapped	SUM Properly	Mean Mapped	Mean Properly	MisMatched
+37.3382	39.6684	1000	942.25				4	4	747510		747342			37375.5		37367.1			0
+37.4003	39.7343	1000	942.25				4	5	748753		748546			37437.7		37427.3			0
+37.4625	39.7919	1000	942.45				4	6	749999		749874			37499.9		37493.7			0
+37.4967	39.8282	1000	942.45				4	7	750685		750541			37534.2		37527.1			0
+37.486	39.8169	1000	942.45				4	8	750469		750205			37523.4		37510.2			0
+37.3517	39.6785	1000	942.35				5	4	747780		747612			37389		37380.6			0
+37.4147	39.7454	1000	942.35				5	5	749042		748835			37452.1		37441.8			0
+37.4701	39.7999	1000	942.45				5	6	750151		750009			37507.6		37500.4			0
+37.4852	39.8161	1000	942.45				5	7	750453		750210			37522.7		37510.5			0
+37.4551	39.7824	999		941.55				5	8	749102		748837			37455.1		37441.8			0
+37.3561	39.6833	1000	942.35				6	4	747870		747731			37393.5		37386.6			0
+37.453	39.7776	1000	942.55				6	5	749809		749734			37490.4		37486.7			0
+37.4923	39.8193	1000	942.55				6	6	750595		750376			37529.8		37518.8			0
+37.4784	39.8089	1000	942.45				6	7	750318		750075			37515.9		37503.8			0
+37.4437	39.766	999		941.65				6	8	748874		748616			37443.7		37430.8			0
+37.4013	39.7312	1000	942.35				7	4	748774		748698			37438.7		37434.9			0
+37.4592	39.7907	1000	942.4				7	5	749934		749835			37496.7		37491.8			0
+37.4682	39.7981	1000	942.45				7	6	750114		749897			37505.7		37494.8			0
+37.4239	39.7468	1000	942.55				7	7	749227		748993			37461.3		37449.7			0
+37.417	39.736	998		940.75				7	8	747591		747320			37379.6		37366			0
+37.4413	39.761	1000	942.65				8	4	749575		749499			37478.8		37474.9			0
+37.4492	39.7843	1000	942.3				8	5	749733		749562			37486.7		37478.1			0
+37.4441	39.7711	998		940.6				8	6	748133		747888			37406.7		37394.4			0
+37.4274	39.7517	997		939.7				8	7	747052		746779			37352.6		37338.9			0
+37.5014	39.8269	989		932.25				8	8	742528		742279			37126.4		37113.9			0
+```
+
+I have added extra tabs for readability.  The output contains the average coverage per contig, the average coverage per contig not counting zero coverage contigs, the number of contigs, the mean number of contigs mapped, the two cutoff values used, the sum of all mapped reads, the sum of all properly mapped reads, the mean number of mapped reads, the mean number of properly mapped reads, and the number of reads that are mapped to mismatching contigs.
+Here, we are looking to values that maximize properly mapped reads, the mean number of contigs mapped, and the coverage.  In this example, it's easy.  Values 4,7 produce the highes number of properly mapped reads, coverage, and contigs.  
+Real data will involve a judgement call.  Again, I haven't finished vetting this script, so use at your own risk.
+
 # pyRAD assembly tutorial
 
 Now, let's take a look at another way to assemble RAD data from the software package pyRAD.  Please note that many of these steps have been altered from Deren Eaton's tutorial
