@@ -1,5 +1,5 @@
 ###Reference Assembly Tutorial###
-###B@G 2016###
+###B@G 2017###
 ###Designed by Jon Puritz###
 
 ###GOALS###
@@ -14,16 +14,16 @@
 ## step of the tutorial.
 ## Command lines start with a "$"
 
-#1 Welcome to the first exercise of B@G 2016!!
+#1 Welcome to the first exercise of B@G 2017!!
 #1
 #1 Let's get started.  First let's create a working directory for yourself for the Day 1 workshop
 
 #1		$mkdir D1W
 
-#2 Let's change into that directory and load the dDocent2.18 module
+#2 Let's change into that directory and load the dDocent2.2.7 module
 
 #c#2	$cd D1W
-#c#2	$module load dDocent/v2.18
+#c#2	$module load dDocent/v2.2.7
 
 #3 Now let's get the test data I created for the course.
 
@@ -294,7 +294,7 @@
 #21
 #c#21	$cd-hit-est -i uniq.F.fasta -o xxx -c 0.8 -T 0 -M 0 -g 1
 #21
-#21 This code clusters all off the forward reads by 80% similarity.  
+#21 This code clusters all of the forward reads by 80% similarity.  
 #21 This might seem low, but other functions of rainbow will break up clusters given the number and frequency of variants, 
 #21 so it's best to use a low value at this step.
 #22
@@ -482,7 +482,7 @@
 #38 
 #38 Here, I am going to let you in on an experimental script I have been using to help optimize reference assemblies.
 #38
-#c#38	$curl -L -O https://raw.githubusercontent.com/jpuritz/WinterSchool.2016/master/Exercises/Day%201/RefMapOpt.sh
+#c#38	$curl -L -O https://raw.githubusercontent.com/jpuritz/dDocent/master/scripts/RefMapOpt.sh
 #38
 #38 This script assembles references across cutoff values and then maps 20 random samples and evaluates mappings to the reference, along with number of contigs and coverage.  
 #39 It takes a long time to run, but here's a sample command and output
@@ -495,31 +495,31 @@
 #c#40	$cat mapping.results
 
 #40 Cov		Non0Cov	Contigs	MeanContigsMapped	K1	K2	SUM Mapped	SUM Properly	Mean Mapped	Mean Properly	MisMatched
-#40 37.3272	39.6102	1000	943.35				4	4	747290		747065			37364.5		37353.2			0
-#40 37.3819	39.6683	1000	943.35				4	5	748386		748110			37419.3		37405.5			0
-#40 37.4439	39.7298	1000	943.45				4	6	749626		749445			37481.3		37472.2			0
-#40 37.4826	39.7709	1000	943.45				4	7	750401		750222			37520.1		37511.1			0
-#40 37.4648	39.7522	1000	943.45				4	8	750045		749760			37502.2		37488			0
-#40 37.3382	39.6198	1000	943.4				5	4	747510		747285			37375.5		37364.2			0
-#40 37.3954	39.6805	1000	943.4				5	5	748655		748379			37432.8		37418.9			0
-#40 37.448	39.7343	1000	943.45				5	6	749710		749529			37485.5		37476.4			0
-#40 37.4689	39.7565	1000	943.45				5	7	750127		749860			37506.3		37493			0
-#40 37.4436	39.728	999		942.55				5	8	748872		748587			37443.6		37429.3			0
-#40 37.3447	39.6268	1000	943.4				6	4	747640		747433			37382		37371.7			0
-#40 37.4288	39.7117	1000	943.5				6	5	749324		749220			37466.2		37461			0
-#40 37.4724	39.7582	1000	943.5				6	6	750198		749944			37509.9		37497.2			0
-#40 37.4537	39.7405	1000	943.45				6	7	749824		749557			37491.2		37477.8			0
-#40 37.4381	39.72	999		942.6				6	8	748761		748478			37438.1		37423.9			0
-#40 37.3876	39.6723	1000	943.4				7	4	748499		748407			37424.9		37420.3			0
-#40 37.4374	39.7253	1000	943.4				7	5	749497		749388			37474.8		37469.4			0
-#40 37.4482	39.7346	1000	943.45				7	6	749714		749475			37485.7		37473.8			0
-#40 37.4117	39.6938	1000	943.5				7	7	748982		748732			37449.1		37436.6			0
-#40 37.4108	39.6893	998		941.7				7	8	747468		747207			37373.4		37360.3			0
-#40 37.4254	39.7041	1000	943.6				8	4	749256		749164			37462.8		37458.2			0
-#40 37.4307	39.7202	1000	943.35				8	5	749363		749185			37468.2		37459.2			0
-#40 37.4209	39.7042	998		941.6				8	6	747669		747400			37383.4		37370			0
-#40 37.4094	39.6924	997		940.65				8	7	746692		746416			37334.6		37320.8			0
-#40 37.4915	39.7712	989		933.3				8	8	742332		742048			37116.6		37102.4			0
+#40 37.5602	39.876	1000	942.95				4	4	751956		751919			37597.8		37595.9			0
+#40 37.6285	39.9483	1000	942.95				4	5	753323		753256			37666.2		37662.8			0
+#40 37.6623	39.9842	1000	942.95				4	6	753999		753871			37699.9		37693.6			0
+#40 37.6788	40.0016	1000	942.95				4	7	754329		754200			37716.4		37710			0
+#40 37.6688	39.991	1000	942.95				4	8	754129		754000			37706.4		37700			0
+#40 37.5636	39.8795	1000	942.95				5	4	752023		752017			37601.2		37600.8			0
+#40 37.6295	39.9408	1000	943.15				5	5	753343		753307			37667.2		37665.3			0
+#40 37.6744	39.997	1000	942.95				5	6	754242		754113			37712.1		37705.7			0
+#40 37.6704	39.9927	1000	942.95				5	7	754161		754031			37708.1		37701.6			0
+#40 37.6578	39.9776	999		942.05				5	8	753157		753057			37657.8		37652.8			0
+#40 37.5898	39.9074	1000	942.95				6	4	752547		752542			37627.3		37627.1			0
+#40 37.6477	39.9601	1000	943.15				6	5	753706		753641			37685.3		37682.1			0
+#40 37.6674	39.9895	1000	942.95				6	6	754102		753973			37705.1		37698.7			0
+#40 37.6595	39.9812	1000	942.95				6	7	753943		753843			37697.2		37692.2			0
+#40 37.6441	39.9631	999		942.05				6	8	752882		752783			37644.1		37639.2			0
+#40 37.5981	39.9161	1000	942.95				7	4	752715		752680			37635.8		37634			0
+#40 37.653	39.9766	1000	942.9				7	5	753813		753747			37690.7		37687.3			0
+#40 37.6528	39.9741	1000	942.95				7	6	753809		753709			37690.4		37685.4			0
+#40 37.6439	39.9646	1000	942.95				7	7	753630		753531			37681.5		37676.6			0
+#40 37.608	39.9231	998		941.15				7	8	751408		751309			37570.4		37565.4			0
+#40 37.6299	39.9413	1000	943.15				8	4	753350		753316			37667.5		37665.8			0
+#40 37.6321	39.9543	1000	942.9				8	5	753394		753357			37669.7		37667.8			0
+#40 37.621	39.9411	998		941.05				8	6	751667		751566			37583.3		37578.3			0
+#40 37.6193	39.9398	997		940.1				8	7	750882		750783			37544.1		37539.2			0
+#40 37.6634	39.9828	989		932.65				8	8	745735		745637			37286.8		37281.8			0
 #40
 #40 I have added extra tabs for readability.  The output contains the average coverage per contig, 
 #40 the average coverage per contig not counting zero coverage contigs, the number of contigs, 
@@ -544,7 +544,7 @@
 #44	In case you weren't aware, this makes a virtual link (like one on a desktop) to a file and saves disk space by not recopying the files
 #45
 #45	Now, let's load pyRAD
-#c#45	module load pyRAD/3.0.6
+#c#45	$module load pyRAD/3.0.6
 #45	Next, let's create a parameters file
 #c#46	$pyrad -n
 #46	This creates a file (params.txt) that we can edit to adjust the settings of pyRAD
@@ -705,16 +705,16 @@
 #60
 #61	Let's take a look at the stats.
 #c#61	$head ./stats/c88d6m4p3.stats 
-#61	1018        ## loci with > minsp containing data
-#61	108         ## loci with > minsp containing data & paralogs removed
-#61	108         ## loci with > minsp containing data & paralogs removed & final filtering
+#61	1011        ## loci with > minsp containing data
+#61	78         ## loci with > minsp containing data & paralogs removed
+#61	78         ## loci with > minsp containing data & paralogs removed & final filtering
 #61
 #61	## number of loci recovered in final data set for each taxon.
 #61	taxon	nloci
-#61	PopA_01	68
-#61	PopA_02	67
+#61	PopA_01	58
+#61	PopA_02	57
 #61
-#62 What the heck happened to all our data?  We went from 1009 RAD fragments to 77???????
+#62 What the heck happened to all our data?  We went from 1011 RAD fragments to 57???????
 #62 It looks like pyRAD is inferring that almost all of the loci are paralogs
 #62 Remember, pyRAD is designed to generate phylogenetic data sets and is not default configured to deal with highly polymorphic populations.
 #62 Setting number 13 sets the maximum number of individuals with a shared heterozygous site.  The default configuration is only 3.  
@@ -725,16 +725,16 @@
 #63	
 #63	Let's see if that helped.
 #c#63	$head ./stats/c88d6m4p3.stats
-#63	1018        ## loci with > minsp containing data
-#63	970         ## loci with > minsp containing data & paralogs removed
-#63	970         ## loci with > minsp containing data & paralogs removed & final filtering
+#63	1011        ## loci with > minsp containing data
+#63	958         ## loci with > minsp containing data & paralogs removed
+#63	958         ## loci with > minsp containing data & paralogs removed & final filtering
 #63
 #63 ## number of loci recovered in final data set for each taxon.
 #63 taxon	nloci
-#63	PopA_01	806
-#63	PopA_02	802
+#63	PopA_01	830
+#63	PopA_02	833
 #64
-#64 That looks much better! 970 is very close to the actual value!
+#64 That looks much better! 958 is very close to the actual value!
 #64	Now that you know how to manipulate the different parameters in pyRAD, experiment on your own to see if you can find the right settings to get to 
 #64	the correct number of loci!
 ######################################
@@ -747,11 +747,39 @@ if which Ref.Ex &>/dev/null; then
 else
 	LOC="./Ref.Ex"
 fi
+DIR=(`echo $LOC | sed 's/Ref.Ex//g' `)
 if [[ -z "$1" ]]; then
 head -16 $LOC | grep "##" 
+echo "0" > $DIR/ref.ex.last
 else
-PATTERN=#$1[[:blank:]]
-PATTERN2=#c#$1
-PATTERN4=^$1
-grep $PATTERN $LOC | sed 's/'$PATTERN2'\t/ /g' | sed 's/#'$1'\s/ /g'
+	if [ "$1" == "last" ]; then
+	LAST=(`cat $DIR/ref.ex.last `)
+	PATTERN=#$LAST[[:blank:]]
+	PATTERN2=#c#$LAST
+	PATTERN4=^$LAST
+	grep $PATTERN $LOC | sed 's/'$PATTERN2'\t/ /g' | sed 's/#'$LAST'\s/ /g'
+	echo $LAST > $DIR/ref.ex.last
+	elif [ "$1" == "next" ]; then
+        LAST=(`cat $DIR/ref.ex.last `)
+	LAST=$(($LAST +1))
+        PATTERN=#$LAST[[:blank:]]
+        PATTERN2=#c#$LAST
+        PATTERN4=^$LAST
+        grep $PATTERN $LOC | sed 's/'$PATTERN2'\t/ /g' | sed 's/#'$LAST'\s/ /g'
+        echo $LAST > $DIR/ref.ex.last
+	elif [ "$1" == "prev" ]; then
+        LAST=(`cat $DIR/ref.ex.last `)
+        LAST=$(($LAST - 1))
+        PATTERN=#$LAST[[:blank:]]
+        PATTERN2=#c#$LAST
+        PATTERN4=^$LAST
+        grep $PATTERN $LOC | sed 's/'$PATTERN2'\t/ /g' | sed 's/#'$LAST'\s/ /g'
+        echo $LAST > $DIR/ref.ex.last
+	else
+	PATTERN=#$1[[:blank:]]
+	PATTERN2=#c#$1
+	PATTERN4=^$1
+	grep $PATTERN $LOC | sed 's/'$PATTERN2'\t/ /g' | sed 's/#'$1'\s/ /g'	
+	echo $1 > $DIR/ref.ex.last
+	fi
 fi
