@@ -821,7 +821,7 @@ Clusters: 1050 Size min 1, max 40, avg 31.9
 Singletons: 19, 0.1% of seqs, 1.8% of clusters
 
 	finished clustering
-[```
+```
 We can see that pyRAD (via the program vsearch) found 1049 different shared reference sequences
 
 Next we call the last step of pyRAD to produce usable outputs of all the data
@@ -848,6 +848,7 @@ Let's take a look at the stats.
 ```bash 
 head ./stats/c88d6m4p3.stats 
 ```
+
 ```
 1018        ## loci with > minsp containing data
 108         ## loci with > minsp containing data & paralogs removed
@@ -863,6 +864,7 @@ It looks like pyRAD is inferring that almost all of the loci are paralogs.
 Remember, pyRAD is designed to generate phylogenetic data sets and is not default configured to deal with highly polymorphic populations.
 Setting number 13 sets the maximum number of individuals with a shared heterozygous site.  The default configuration is only 3.  
 In a population we expect that heterozygosity maxes out at 50%.  In this simulated data, we have two populations of 20 individuals each, and with little genetic structure between them.  Let's try setting this to 20 and rerunning step 7.
+
 ```bash 
 sed -i '/## 13./c\20                     ## 13. MaxSH: max inds with shared hetero site ' ./params.txt
 rm ./outfiles/* && pyrad -p params.txt -s 7
