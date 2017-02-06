@@ -13,7 +13,7 @@ Designed by Jon Puritz
 Let's find our way back to your original working directory and make sure the dDocent module is loaded
 ```bash	
 cd ~/D1W
-module load dDocent/v2.18 
+module load dDocent/v2.2.7 
 ```
 We are going to use the program BWA to learn about read mapping.  Specifically, we are going to be working with the
 MEM algorithm of the program.  BWA-MEM is a fast, customizable, and accurate read mapping software.  Look at comparisons in
@@ -179,7 +179,7 @@ To get a better idea of how to optimize mapping further, let's take a look at so
 ```bash
 mkdir realdata
 cd realdata
-ln -s /gdc_home5/groups/bag2016/monday/mapping2/* .
+ln -s /gdc_home5/groups/bag2017/shared_data/mapping/* .
 bwa mem reference.fasta JC_1119.R1.fq.gz JC_1119.R2.fq.gz -I 200,40 -t 8 2>/dev/null | samtools view -@8 -q 1 -SbT reference.fasta - | samtools flagstat -
 ```
 ```
@@ -205,17 +205,20 @@ Now, we have a baseline to work with for this individual.  Let's try to optimize
 bwa mem reference.fasta JC_1119.R1.fq.gz JC_1119.R2.fq.gz -I 200,40 -t 8 -B 3 -O 5 2>/dev/null | samtools view -@8 -q 1 -SbT reference.fasta - | samtools flagstat -
 ```
 ```
-1803670 + 0 in total (QC-passed reads + QC-failed reads)
+2330088 + 0 in total (QC-passed reads + QC-failed reads)
+0 + 0 secondary
+2698 + 0 supplementary
 0 + 0 duplicates
-1803670 + 0 mapped (100.00%:-nan%)
-1803670 + 0 paired in sequencing
-911530 + 0 read1
-892140 + 0 read2
-1758193 + 0 properly paired (97.48%:-nan%)
-1777652 + 0 with itself and mate mapped
-26018 + 0 singletons (1.44%:-nan%)
-19131 + 0 with mate mapped to a different chr
-17882 + 0 with mate mapped to a different chr (mapQ>=5)
+2330088 + 0 mapped (100.00% : N/A)
+2327390 + 0 paired in sequencing
+1174723 + 0 read1
+1152667 + 0 read2
+2158943 + 0 properly paired (92.76% : N/A)
+2268603 + 0 with itself and mate mapped
+58787 + 0 singletons (2.53% : N/A)
+107852 + 0 with mate mapped to a different chr
+80029 + 0 with mate mapped to a different chr (mapQ>=5)
+
 ```
 So, we've improved things somewhat.  We've mapped more reads and mapped more less with discordant mates, but decreased the proper pairings %, increased our singletons.
 This discordant mappings, however, make up a very small percentage of the total mappings, around 1.5%.  Previously, it was 1.46%.  This probably is a good stopping point for
@@ -290,7 +293,7 @@ paste <(cut -f1 -d + relaxed.stats) <(cut -f1 -d + normal.stats) <(cut -f4-10 -d
 68401 		69122 		with mate mapped to a different chr
 ```	
 I cheated and added extra tabs to make the table better.  We can see that the relaxed stats lead to more mappings and  more proper pairings.
-The only drawback to the more relaxed mappings is that there are more discordant mapping pairs and singletons.  These extra discordant mappings may be of very low quality and
+The only drawback to the more relaxed mappings is that there are more discordant mapping pairs and singletons.  These extra discordant mappings may be of very low quality and may not factor into genotyping.
 
 Now on your own, try repeating the previous steps with a mapping quality cutoff of 5 and 10.  Does the same pattern hold true?
 Your results should look like this:
@@ -336,13 +339,15 @@ Here are some other things you can try if you have extra time.
 Another program from the ea-utils suite called sam-stats can be helpful to evaluate alignments as well.
 You can quickly download and install it with the following commands:
 ```bash
-curl -O https://ea-utils.googlecode.com/files/ea-utils.1.1.2-537.tar.gz
-tar xvzf ea-utils.1.1.2-537.tar.gz
-cd ea-utils.1.1.2-537
+wget -L https://github.com/ExpressionAnalysis/ea-utils/archive/1.04.807.tar.gz
+tar xvzf 1.04.807.tar.gz
+cd ea-utils-1.04.807
+cd clipper
 make
 cp sam-stats ~/bin
 cd ..
-rm -rf ea-utils.1.1.2-537*
+cd ..
+rm -rf ea-utils-1.04.807*
 ```
 You can pipe results to this program, just like samtools, so you don't need to waste time writing files while optimizing.
 Here is an example from one of our exercises above:
@@ -351,8 +356,9 @@ bwa mem reference.fasta JC_1119.R1.fq.gz JC_1119.R2.fq.gz -I 200,40 -t 8 -B 3 -O
 ```
 ```
 reads	2272415
-version	1.34.488
+version	1.38.763
 mapped reads	2272409
+pct align	100.000000
 ambiguous	6
 pct ambiguous	0.000251
 max dup align	3
@@ -373,7 +379,7 @@ mapq stdev	11.1001
 mapq Q1	60.00
 mapq median	60.00
 mapq Q3	60.00
-snp rate	0.013529
+snp rate	0.009710
 ins rate	0.002009
 del rate	0.001809
 pct mismatch	51.7389
