@@ -1,4 +1,4 @@
-#SNP Filtering Exercise for B@G 2016 Winter School
+#SNP Filtering Exercise for B@G 2017 Winter School
 Designed by Jon Puritz
 
 #GOALS
@@ -17,7 +17,7 @@ Let's find our way back to your original working directory and make a new filter
 cd ~/D1W
 mkdir filtering
 cd filtering
-module load dDocent/v2.18
+module load dDocent/v2.2.7
 ```
 Now, let's download some data to look at.  
 
@@ -50,7 +50,6 @@ drwxr-xr-x. 2 jpuritz users       21 Mar  6 16:16 __MACOSX
 
 To start, we are going to use the program VCFtools (http://vcftools.sourceforge.net) to filter our vcf file.  This program has a binary executable
 and has several perl scripts as well that are useful for filtering. 
-I find it much more useful to use version 0.1.11, since it has more useful filtering commands (I think).  Let's load that version
 This raw.vcf file is going to have a lot of erroneous variant calls and a lot of variants that are only present in one individual.  
 To make this file more manageable, let's start by applying three step filter.  We are going to only keep variants that have been successfully genotyped in 
 50% of individuals, a minimum quality score of 30, and a minor allele count of 3.
@@ -175,7 +174,6 @@ unset label
 set title "Histogram of % missing data per individual"
 set ylabel "Number of Occurrences"
 set xlabel "% of missing data"
-#set yr [0:100000]
 binwidth=0.01
 bin(x,width)=width*floor(x/width) + binwidth/2.0
 plot 'totalmissing' using (bin($1,binwidth)):(1.0) smooth freq with boxes
@@ -544,7 +542,7 @@ are paired but not supporting the alternate allele.  That is indicative of a pro
 mawk '!/#/' DP3g95p5maf05.fil4.vcf | wc -l
 9166
 ```
-Our loci count keeps dwindling, but our signal to noise ration keeps increasing.  Let's look at an example of what we filtered.
+Our loci count keeps dwindling, but our signal to noise ratio keeps increasing.  Let's look at an example of what we filtered.
 
 ```bash
 samtools tview BR_006-RG.bam reference.fasta -p E4407_L138
@@ -675,7 +673,7 @@ The script assumes that loci and individuals with low call rates (or depth) have
 
 Contact Jon Puritz (jpuritz@gmail.com) for questions and see script comments for more details on particular filters
 
-Usage is sh FB_filters.sh VCF_file Output_prefix
+Usage is bash FB_filters.sh VCF_file Output_prefix
 ```
 
 The next filter to apply is HWE.  Heng Li also found that HWE is another excellent filter to remove erroneous variant calls.
@@ -751,8 +749,9 @@ Kept 8176 of a possible 8379 loci (filtered 203 loci)
 We have now created a thoroughly filtered VCF, and we should have confidence in these SNP calls.  
 However, our lab is currently developing one more script, called rad_haplotyper.  
 This tool takes a VCF file of SNPs and will parse through BAM files looking to link SNPs into haplotypes along paired reads.
+
 ```bash
-curl -L -O https://raw.githubusercontent.com/jpuritz/WinterSchool.2016/master/rad_haplotyper.pl
+curl -L -O https://raw.githubusercontent.com/chollenbeck/rad_haplotyper/e8bdc79f1d1d9ce3d769996315fc1ffd3a7d0e4e/rad_haplotyper.pl
 chmod +x rad_haplotyper.pl
 
 ```
@@ -990,4 +989,4 @@ The total SCORCHED EARTH error rate is 0.0330857386294.
 
 #Even bigger Congrats!  You've finished all the Exercises for Day 1!
 
-###One extra note: My previous lab just published a manuscript on the rad_haplotyper script 
+###One extra note: My previous lab just published a manuscript on the rad_haplotyper script (Link here)[http://onlinelibrary.wiley.com/doi/10.1111/1755-0998.12647/full?wol1URL=/doi/10.1111/1755-0998.12647/full&regionCode=CH&identityKey=5089aa46-c3b0-42f3-a827-e366b7850895]
