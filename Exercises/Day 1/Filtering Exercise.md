@@ -989,4 +989,4 @@ The total SCORCHED EARTH error rate is 0.0330857386294.
 
 #Even bigger Congrats!  You've finished all the Exercises for Day 1!
 
-###One extra note: My previous lab just published a manuscript on the rad_haplotyper script (Link here)[http://onlinelibrary.wiley.com/doi/10.1111/1755-0998.12647/full?wol1URL=/doi/10.1111/1755-0998.12647/full&regionCode=CH&identityKey=5089aa46-c3b0-42f3-a827-e366b7850895]
+###One extra note: My previous lab just published a manuscript on the rad_haplotyper script [Link here](http://onlinelibrary.wiley.com/doi/10.1111/1755-0998.12647/full?wol1URL=/doi/10.1111/1755-0998.12647/full&regionCode=CH&identityKey=5089aa46-c3b0-42f3-a827-e366b7850895)
