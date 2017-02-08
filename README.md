@@ -14,7 +14,7 @@ Marine Science Center, Northeastern University, USA
 Wellcome Trust Sanger Institute, UK
 
 * **[Lectures]()**
-* **[Practical]()**
+* **[Practical](https://github.com/ekg/alignment-and-variant-calling-tutorial)**
 
 ## Statistical population genetics and inference of population structure 
 ##### Prof. Dr. Alex Buerkle 
