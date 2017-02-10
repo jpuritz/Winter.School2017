@@ -20,6 +20,7 @@ Wellcome Trust Sanger Institute, UK
 ##### Prof. Dr. Alex Buerkle 
 University of Wyoming, USA
 
+* **[Full lecture notes](/Lectures/Day3/notes.pdf)**
 * **[Questions and Practical](/Exercises/Day3/)**
 
 ## Detection of signatures of selection
