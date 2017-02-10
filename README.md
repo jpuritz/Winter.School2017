@@ -14,7 +14,7 @@ Marine Science Center, Northeastern University, USA
 Wellcome Trust Sanger Institute, UK
 
 * **[Lectures]()**
-* **[Practical]()**
+* **[Practical](https://github.com/ekg/alignment-and-variant-calling-tutorial)**
 
 ## Statistical population genetics and inference of population structure 
 ##### Prof. Dr. Alex Buerkle 
@@ -26,8 +26,8 @@ University of Wyoming, USA
 ##### Dr. Anders Albrechtsen
 Bioinformatics Centre, Copenhagen University, Denmark
 	
-* **[Lectures](/Lectures/Day 4)**
-* **[Practical](/Exercises/Day 4)**
+* **[Lectures](http://popgen.dk/albrecht/BAG2017/web/#sec5)**
+* **[Practical](http://popgen.dk/albrecht/BAG2017/web/#sec6)**
 
 ## Inferring complex demographies from genomic data and low coverage GWAS  
 ##### Prof. Dr. Daniel Wegmann 
